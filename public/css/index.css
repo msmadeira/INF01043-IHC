@@ -1,0 +1,20 @@
+body {
+    padding: 30px;
+    margin: 0px;
+	background-color: green;
+    /*background-image: url(https://images.all-free-download.com/images/graphiclarge/pets_background_dogs_bone_icons_decoration_repeating_style_6828678.jpg);*/
+}
+
+.main_container {
+	background-color: #264424;
+    margin: 10px;
+	padding: 10px;
+	border-radius: 10px;
+	font-family: 'Roboto', sans-serif;
+	color: #231f20;
+}
+
+#pesquisa{
+	background-color: #264424;
+	border-color: #264424;
+}
