@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produtos_Teste extends Model
 {
-    use HasFactory;
+    protected $table = 'eh_vegan.produtos_teste';
 }
