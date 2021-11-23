@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 use App\Models\Produtos;
 use App\Models\Produtos_Teste;
 use File;
@@ -38,12 +39,6 @@ class HomeController extends Controller
 		 foreach($produtos as $produto){
 			if(!empty($produto->foto))
 			{
-				 $image = imagecreatefromstring($produto->foto); 
-
-				 ob_start();
-				 imagejpeg($image, null, 80);
-				 $produto->foto = ob_get_contents();
-				 ob_end_clean();
 				 $produto->foto = base64_encode($produto->foto);
 			 }
 		}
@@ -59,23 +54,15 @@ class HomeController extends Controller
 		$produto->fabricante = request('fabricante');
 		$produto->ingredientes = request('ingredientes');
 		$produto->email = request('email');
-
-		dd($request->all(), $request->has('photo'));
-
+		
 		if ($request->hasFile('foto')) {
 
             $file = $request->file('foto');
 			$imageType = $file->getClientOriginalExtension();
-			
-			$image_resize = Image::make($file)->resize( null, 90, function ( $constraint ) {
-																	$constraint->aspectRatio();
-																})->encode( $imageType );            
+			$image_resize = Image::make($file)->resize(null, 200, function ( $constraint ) {	$constraint->aspectRatio(); })->encode($imageType);
 			$produto->foto = $image_resize;
-			
-			echo $produto; die();
             $produto->save();
         }
-
 		return redirect('/');
 	}
 }

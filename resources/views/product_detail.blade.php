@@ -41,7 +41,7 @@ use App\Http\Controllers\UserController;
 						<img src="no_image.jpg" style="max-width: 150px; border-radius: 5px"/></td>
 					@endif
 					<td style="padding-left: 30px">
-						<div style="background-color: #EAEAEA; padding: 23px; width: 1563px; border-radius: 5px">
+						<div style="background-color: #EAEAEA; padding: 23px; width: 1245px; border-radius: 5px">
 							<strong>Nome:</strong> {{$produto->nome}} <br>
 							<strong>Fabricante:</strong> {{$produto->fabricante}} <br>
 							<strong>Ingredientes:</strong> {{$produto->ingredientes}} <br>
@@ -68,7 +68,7 @@ use App\Http\Controllers\UserController;
 						<strong>Fabricante: </strong><input type="text" name="fabricante" class=form-control required></td></tr><tr><td style='padding: 10px'>
 						<strong>Ingredientes: </strong><textarea type="textarea" name="ingredientes" rows="4" cols="50" class=form-control required></textarea></td></tr><tr><td style='padding: 10px'>
 						<strong>E-mail: </strong><input type="email" name="email" class=form-control required></td></tr><tr><td style='padding: 10px'>
-						<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+						<input type="hidden" name="MAX_FILE_SIZE" value="99999999" />
 						<strong>Submeta uma foto do produto:</strong>
 						<input type="file" id="foto" name="foto"></td></tr><tr><td style='padding: 10px'>
 						<input type="hidden" name="_token" value="{{csrf_token()}}">
