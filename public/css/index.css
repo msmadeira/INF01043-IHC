@@ -18,3 +18,33 @@ body {
 	background-color: #264424;
 	border-color: #264424;
 }
+
+.text-white{
+    color: white;
+}
+
+.card {
+    padding: 16px 32px;
+    background-color: #EAEAEA;
+    border-radius: 5px;
+}
+
+.text-bold {
+    font-weight: 600;
+}
+
+.text-center {
+    text-align: center;;
+}
+
+.login-btn-wrapper > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-content {
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: green;
+}

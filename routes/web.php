@@ -17,12 +17,18 @@ use App\Http\Controllers\SearchController;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/area-de-suporte', function () {
+    return view('support_area');
+});
+
+// Para criar um novo usuário apenas descomentar essa rota e preencher o formulário
+// Route::get('/registro', function () {
+//     return view('auth.register');
+// });
+
 /*
 Route::get('/pesquisa', 'App\Http\Controllers\PesquisaController@index')->name('pesquisa');
-
-Route::get('/cadastro', function () {
-    return view('\auth\register');
-});
 
 Route::get('/sobre', function () {
     return view('sobre');
@@ -35,7 +41,7 @@ Route::get('/login', function () {
 Route::get('/ong_login', function () {
     return view('ong_login');
 });
-	
+
 Route::get('/ong_register', function () {
     return view('ong_register');
 });

@@ -24,10 +24,10 @@ use App\Http\Controllers\UserController;
         <div class="nav_container">
             <!--<a class="nav_button button" href="{{ url('/pesquisa') }}">PESQUISA</a>
             <a class="nav_button button" href="{{ url('/cadastro') }}">CADASTRO</a>-->
-			<a class="nav_button button" href="{{url('/')}}">LOGIN ÁREA DE SUPORTE</a>
+			<a class="nav_button button" href="{{url('/login')}}">LOGIN ÁREA DE SUPORTE</a>
 			<!--<a class="nav_button button" href="{{url('/ong_login')}}">ONGS</a>
             <a class="nav_button button" href="{{ url('/sobre') }}">SOBRE</a>-->
-			
+
         </div>
 		<div class="main_container">
 			@if(Auth::check())
@@ -36,11 +36,11 @@ use App\Http\Controllers\UserController;
 			<br><br>
 			<center>
 				<form class="" action="{{URL::to('/find_prod')}}" method="post">
-				<table><tr><td style='width: 500px'>
-				<input type="text" name="name" class="form-control" value="" placeholder="Pesquise o produto ou fabricante" required> </td><td style='padding: 5px'>
-				<input type="hidden" name="_token" value="{{csrf_token()}}">
-				<button id='pesquisa' type="submit" name="button" class="btn btn-primary btn-lg"><i class="bi-search"></i></button></td></tr></table>
-			</form>
+                    <table><tr><td style='width: 500px'>
+                    <input type="text" name="name" class="form-control" value="" placeholder="Pesquise o produto ou fabricante" required> </td><td style='padding: 5px'>
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <button id='pesquisa' type="submit" name="button" class="btn btn-primary btn-lg"><i class="bi-search"></i></button></td></tr></table>
+                </form>
 			</center>
 			<br><br>
 			@endif
