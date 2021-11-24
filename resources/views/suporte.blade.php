@@ -10,7 +10,7 @@ use App\Http\Controllers\UserController;
         <meta charset="utf-8">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-		<title>Eh Vegan? | Área de Suporte</title>
+		<title>Eh Vegan? | Área do Suporte</title>
         <style>
             <?php include 'css/navbar.css'; ?>
             <?php include 'css/index.css'; ?>
