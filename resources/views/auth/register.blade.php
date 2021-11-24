@@ -1,47 +1,48 @@
+<!DOCTYPE html>
+<?php
+use App\Http\Controllers\UserController;
+?>
 @extends('layouts.app')
 
 @section('content')
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-		<title>Caramelo | Site de Adoção e Lar Temporário</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<title>Eh Vegan? | Cadastro de Usu&aacute;rio</title>
         <style>
             <?php include 'css/navbar.css'; ?>
             <?php include 'css/index.css'; ?>
         </style>
     </head>
-	
-	<body>
+    <body>
         <div class="logo_site">
 			<center><a href="{{ url('/') }}">
-			<img src="logo_caramelo.png" alt="Site Caramelo" width="700"></a></center>
+			<img src="logo_ehvegan.png" alt="Site Eh Vegan?" width="700"></a></center>
         </div>
         <div class="nav_container">
 			@if(Auth::check())
-				<a class="nav_button button" href="{{ url('/') }}">Bem-Vindo {{ Auth::user()->name }}</a>
+				<a class="nav_button button" href="{{url('/suporte')}}">VOLTAR</a>
+			@else
+				<a class="nav_button button" href="{{url('/')}}">VOLTAR</a>
 			@endif
-            <a class="nav_button button" href="{{ url('/pesquisa') }}">PESQUISA</a>
-            <a class="nav_button button" href="{{ url('/cadastro') }}" style="background-color: #4b2b04">CADASTRO</a>
-			<a class="nav_button button" href="{{url('/login')}}">LOGIN</a>
-			<a class="nav_button button" href="{{url('/ong_login')}}">ONGS</a>
-            <a class="nav_button button" href="{{ url('/sobre') }}">SOBRE</a>
         </div>
 		<div class="main_container">
-
-<div class="container">
+		@if(Auth::check())
+<div class="page-content">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-4 col-md-offset-4">
             <div class="card">
-                <div class="card-header"><h1>{{ __('Cadastro') }}</h1></div>
+                <h3 class="text-bold text-center">{{ __('Cadastro') }}</h3>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" style="padding: 20px">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                        <div class="form-group">
+                            <label for="name" class="text-md-right">{{ __('Nome: *') }}</label><br>
 
-                            <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
@@ -49,13 +50,11 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                        <div class="form-group">
+                            <label for="email" class="text-md-right">{{ __('E-mail: *') }}</label>
 
-                            <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
@@ -63,49 +62,40 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
                         </div>
 
-						<div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Endereco') }}</label>
+						<div class="form-group">
+                            <label for="address" class="text-md-right">{{ __('Endereco: *') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="address" type="text" class="" name="address" required autocomplete="address">
-
-                        </div>
+                            <input id="address" type="text" class="form-control" name="address" required autocomplete="address">
+						</div>
 						
-						<div class="form-group row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Telefone') }}</label>
+						<div class="form-group">
+                            <label for="phone" class="text-md-right">{{ __('Telefone: *') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="phone" type="text" class="" name="phone" required autocomplete="phone">
+                            <input id="phone" type="text" class="form-control" name="phone" required autocomplete="phone">
+						</div>
 
-                            </div>
+                        <div class="form-group">
+                            <label for="password" class="text-md-right">{{ __('Senha: *') }}</label>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Senha') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Senha') }}</label>
+                        <div class="form-group">
+                            <label for="password-confirm" class="text-md-right">{{ __('Confirmar Senha: *') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4"><br>
+                        <div class="form-group">
+                            <div><br>
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Cadastrar') }}
                                 </button>
@@ -117,5 +107,20 @@
         </div>
     </div>
 </div>
-</div>
-@endsection
+		@else
+				<div style="margin: 20px; padding: 10px; border-radius: 5px; background-color: green">
+					<center>
+					<div style="background-color: #EAEAEA; border-radius: 5px"><br>
+					<table><tr><td style='padding-right: 50px'>
+					<img src="proibido_icon.png" style="max-width: 90px"/></td>
+					</td><td>
+					<h2><strong>Voc&ecirc; n&atilde;o tem permiss&atilde;o de acesso a esta &aacute;rea!</strong></h2>
+					</td></tr></table><br>
+					</div>
+					</center>
+				</div>
+		@endif
+
+		</div>
+    </body>
+</html>
